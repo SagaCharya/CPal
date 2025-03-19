@@ -105,7 +105,6 @@ class Course(models.Model):
         return self.status == PublishStatus.PUBLISHED
 
 
-
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
