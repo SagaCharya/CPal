@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courses',
+    'emails',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,26 @@ from decouple import config
 CLOUDINARY_CLOUD_NAME = config('CLOUDINARY_CLOUD_NAME', default='')
 CLOUDINARY_PUBLIC_API_KEY = config('CLOUDINARY_PUBLIC_API_KEY')
 CLOUDINARY_SECRET_API_KEY = config('CLOUDINARY_SECRET_API_KEY')
+
+
+from decouple import config
+
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = config('EMAIL_HOST', cast=str, default=None)
+EMAIL_PORT = config('EMAIL_PORT', cast=int, default=587)
+EMAIL_ADDRESS = 'sagacharya77@gmail.com'
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str, default=None)
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str, default=None)
+
+ADMIN_USER_NAME = config('ADMIN_USER_NAME', default='Hari')
+ADMIN_USER_EMAIL = config('ADMIN_USER_EMAIL', default=None)
+
+MANAGERS = []
+ADMINS = []
+
+if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
+    ADMINS += [
+        (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
+    ]
+    MANAGERS = ADMINS

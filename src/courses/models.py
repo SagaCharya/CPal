@@ -159,5 +159,9 @@ class Lesson(models.Model):
         return f"{self.title} - {self.course.get_display_name()}"
     
     @property
-    def is_comming_soon(self):
-        return self.status == PublishStatus.COMMING_SOON
+    def is_coming_soon(self):
+        return self.status == PublishStatus.COMING_SOON
+    
+    @property
+    def has_video(self):
+        return self.video is not None
