@@ -141,7 +141,8 @@ CLOUDINARY_PUBLIC_API_KEY = config('CLOUDINARY_PUBLIC_API_KEY')
 CLOUDINARY_SECRET_API_KEY = config('CLOUDINARY_SECRET_API_KEY')
 
 
-from decouple import config
+BASE_URL = config('BASE_URL', default='http://127.0.0.1:8000')
+
 
 EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = config('EMAIL_HOST', cast=str, default=None)
