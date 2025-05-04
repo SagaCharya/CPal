@@ -42,9 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'django_htmx',
+    'theme', # tailwind theme app
+    'tailwind',
     'courses',
     'emails',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,6 +60,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
 ]
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'django_browser_reload',
+    ]
+    MIDDLEWARE += ["django_browser_reload.middleware.BrowserReloadMiddleware"]
+
 
 ROOT_URLCONF = 'core.urls'
 
