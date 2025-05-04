@@ -2,11 +2,8 @@
 {% block headtitle %}home{% endblock headtitle %}
 
 {% block content %}
-<div>
-    <form action="." method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Login</button>
-    </form>
+welcome to the home page
+<div hx-get="hx/login/" hx-trigger='load'>
+    
 </div>
 {% endblock content %}
