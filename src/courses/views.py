@@ -7,9 +7,11 @@ from . import services
 
 def course_list_view(request):
     queryset = services.get_published_courses()
-    print(queryset)
-    # return JsonResponse({'data':[x.path for x in queryset]})
     context = {"object_list": queryset}
+    template_name = "courses/list.html"
+    if request.htmx:
+        template_name = 'courses/snippets/list-display.html'
+        context['queryset'] = queryset[:3]
     return render(request, "courses/list.html", context)
 
 
@@ -18,7 +20,7 @@ def course_detail_view(request, course_id=None, *args, **kwargs):
     if course_obj is None:
         raise Http404
     lesson_queryset = services.get_course_lessons(course_obj)
-    # return JsonResponse({'data':course_obj.id, 'lessons_ids':[x.path for x in lesson_queryset]})
+
     context = {
         'object': course_obj,
         'lessons_queryset': lesson_queryset

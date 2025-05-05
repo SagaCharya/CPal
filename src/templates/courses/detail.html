@@ -3,7 +3,31 @@
 {% block content %}
 
 
-<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-{% include "courses/snippets/list-display.html" with queryset=lessons_queryset %}
+<section class="bg-white dark:bg-gray-900 dark:text-white">
+    <div class="py-3 px-4 mx-auto space-y-8 max-w-screen-xl ">
+        <div class="mx-auto max-w-screen-sm text-center lg:mb-8 mb-4">
+            <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ object.title }}</h2> 
+        </div>
+        <div class='flex justify-center items'>
+        <img class="rounded-lg" src="{{object.get_display_image}}" alt="" width='750'/>
+    </div>
+    <div class='max-w-screen-sm text-center'>
+        {{ object.description|linebreaks }}
+    </div>
+    </div>
+  </section>
+
+
+
+<section class="bg-white dark:bg-gray-900 dark:text-white">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center lg:mb-8 mb-4">
+            <h2 class="mb-4 text-lg lg:text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Lessons</h2>
+            
+        </div>
+        
+        {% include "courses/snippets/list-display.html" with queryset=lessons_queryset %}
+    </div>
+  </section>
 </div>
 {% endblock content %}
