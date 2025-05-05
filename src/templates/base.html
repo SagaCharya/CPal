@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block headtitle %}Base{% endblock headtitle %}</title>
     {% tailwind_css %}
-    {% include "base/js.html" %}
+   
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' >
     {% include "base/navbar.html" %}
@@ -16,7 +16,8 @@
         Hello world from base
     </h1>
       {% endblock content  %}
-    
-    
+  
+ 
+     {% include "base/js.html" %}
   </body>
 </html>

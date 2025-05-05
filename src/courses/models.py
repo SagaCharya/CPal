@@ -99,9 +99,30 @@ class Course(models.Model):
 
     def get_display_name(self):
         return f"{self.title} - Course"
+    
+    def get_thumbnail(self):
+        if not self.image:
+            return None
+        return helpers.get_cloudinary_imgage_object(
+            self, 
+            width=382, 
+            field_name="image",
+            as_html=False,
+        )
+
+    def get_display_image(self):
+        if not self.image:
+            return None
+        return helpers.get_cloudinary_imgage_object(
+            self, 
+            width=750, 
+            field_name="image",
+            as_html=False
+        )
 
     @property
     def is_published(self):
+        
         return self.status == PublishStatus.PUBLISHED
 
 
@@ -169,3 +190,22 @@ class Lesson(models.Model):
     @property
     def has_video(self):
         return self.video is not None
+    
+    def get_thumbnail(self):
+        if self.thumbnail:
+            return helpers.get_cloudinary_imgage_object(
+            self, 
+            field_name="thumbnail",
+            width=382, 
+            as_html=False,
+        )
+        
+        elif self.video:
+            return helpers.get_cloudinary_imgage_object(
+            self, 
+            field_name="video",
+            width=382, 
+            fromat="jpg",
+            as_html=False,
+        )
+        return None

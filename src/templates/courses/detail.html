@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<h1>{{ object.title }}</h1>
 
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 {% include "courses/snippets/list-display.html" with queryset=lessons_queryset %}
+</div>
 {% endblock content %}

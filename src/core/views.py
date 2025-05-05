@@ -6,11 +6,12 @@ from emails.services import verify_email, start_verification_event
 
 EMAIL_ADDRESS = settings.EMAIL_ADDRESS
 
+def login_logout_template_view(request, *args, **kwargs):
+    return render(request, 'auth/login.html', {})
+
 def home_view(request, *args, **kwargs):
     template_name = 'home.html'
     
-    
-
     print(request.POST)
     form = EmailForm(request.POST or None)
     context = {
