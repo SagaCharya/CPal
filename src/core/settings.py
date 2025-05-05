@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'emails',
 ]
 
-
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
